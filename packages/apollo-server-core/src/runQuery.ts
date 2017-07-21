@@ -15,7 +15,7 @@ import {
 import {
   TraceCollector,
   instrumentSchemaForTracing,
-  formatTraceData
+  formatTraceData,
 } from 'apollo-tracing';
 
 export interface GqlResponse {
@@ -167,8 +167,8 @@ function doRunQuery(options: QueryOptions): Promise<GqlResponse> {
             if (traceCollector) {
               traceCollector.requestDidEnd();
               response.extensions = {
-                'tracing': formatTraceData(traceCollector)
-              }
+                'tracing': formatTraceData(traceCollector),
+              };
             }
 
             if (options.formatResponse) {
